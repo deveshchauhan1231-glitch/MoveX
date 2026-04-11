@@ -1,13 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import axios from "axios";
 import "../../styles/login.css"
 import Navbar from "../../components/common/Navbar";
 import Footer from '../../components/common/Footer';
 import Home from "../Home.jsx";
-import ServerUnavailable from "../ServerUnavailable.jsx";
-import { BACKEND_URL } from "../../config/api.js";
+import supabase from "../../config/supabase.js";
 
 function Login(){
     const [searchParams] = useSearchParams();
@@ -15,6 +13,7 @@ function Login(){
     const profile = searchParams.get("profile");
 
     const [registered, setRegistered] = useState(false);
+    const [message, setMessage] = useState("");
 
     const [form, setForm] = useState({
         email:"",
@@ -29,19 +28,26 @@ function Login(){
         e.preventDefault();
 
         try{
-            await axios.post(`${BACKEND_URL}/auth/login`,form, {
-  withCredentials: true,
-});
+            const { error } = await supabase.auth.signInWithPassword({
+                email: form.email,
+                password: form.password
+            });
+
+            if (error) {
+                throw error;
+            }
+
             setRegistered(true);
+            setMessage("");
         }catch{
             setRegistered(false);
-            
+            setMessage("Unable to log in.");
         }
     }
 
-    const message =
+    const statusMessage =
         verified === "success"
-            ? "Email verified successfully. You can log in now."
+            ? "Email verified successfully. Please complete your profile if prompted, or log in now."
             : verified === "invalid"
                 ? "This verification link is invalid or expired."
                 : verified === "missing"
@@ -56,6 +62,7 @@ function Login(){
         <div className="login-frame">
             <Navbar />
         <form className="login-container">
+            {statusMessage ? <p>{statusMessage}</p> : null}
             {message ? <p>{message}</p> : null}
             <span className="login-inp">
             <label>E-mail :    </label>
