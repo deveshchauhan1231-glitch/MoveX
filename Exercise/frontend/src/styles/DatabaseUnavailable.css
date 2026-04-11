@@ -1,0 +1,22 @@
+.db-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.db-wrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.db-box {
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  background: white;
+  color: #2f98;
+}

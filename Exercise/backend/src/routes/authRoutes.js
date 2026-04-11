@@ -1,0 +1,10 @@
+import express from "express";
+import authControllers from "../controllers/authController.js";
+const router=express();
+router.post('/signup',authControllers.signup);
+router.post('/login',authControllers.login);
+router.post('/logout',authControllers.logout);
+router.get('/verify-email',authControllers.verifyEmail);
+router.post('/resend-verification',authControllers.resendVerificationEmail);
+router.post('/complete-profile',authControllers.completeProfileAfterVerification);
+export default router;

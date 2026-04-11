@@ -1,0 +1,36 @@
+.l-frame{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(17, 17, 17);
+}
+.l-content{
+    height: 300px;
+    width: 500px;
+    color: white;
+    background-color: #5bcb97;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    align-items: center;
+    font-size: 1.05rem;
+    
+
+}
+
+@media (max-width: 768px) {
+    .l-content {
+        width: 90%;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .l-content {
+        height: auto;
+        min-height: 220px;
+        font-size: 0.95rem;
+    }
+}

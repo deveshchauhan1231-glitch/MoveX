@@ -1,0 +1,25 @@
+.server-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.server-wrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.server-box {
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(134, 248, 152, 0.1) 0%, rgba(26, 115, 232, 0.05) 100%);
+backdrop-filter: blur(24px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+color: #2bab6f;
+  
+}

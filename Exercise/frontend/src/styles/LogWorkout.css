@@ -1,0 +1,211 @@
+/* Page layout */
+body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.page-frame {
+margin-top: 40px;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 0;
+  background: rgb(17, 17, 17);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main container */
+.main-container {
+  
+  width: 90%;
+  
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex:1;
+}
+
+/* Loading page */
+.loading-page {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-text {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}
+
+.auth-gate-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.auth-gate-btn{
+  width: 300px;
+}
+
+/* Form container */
+.exercise-form {
+  background: rgb(62, 62, 62);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Inputs group */
+.input-group {
+  display: flex;
+  width: 100%;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Input styling */
+.text-input,
+.number-input,
+.select-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.text-input:focus,
+.number-input:focus,
+.select-input:focus {
+  border-color: #4a7cff;
+}
+
+/* Reps group */
+.reps-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.labels{
+    color: white;
+}
+/* Button */
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-btn {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 8px;
+  background: #2bab6f;;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.submit-btn:hover {
+  background: #249f66;
+  transform: scale(1.05);
+}
+
+.submit-btn:active {
+  transform: scale(0.97);
+}
+
+/* Cards section */
+.cards-list {
+  width: 100%;
+}
+
+/* Card wrapper */
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Card */
+.exercise-card {
+  background: rgb(62, 62, 62);
+  border-radius: 10px;
+  padding: 16px;
+  border: 2px solid #249f66;
+  box-shadow: 0px 5px 14px rgba(0,0,0,0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.exercise-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 18px rgba(0,0,0,0.08);
+  background-color: #249f66;
+  color: white;
+}
+
+/* Card text */
+.card-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: white;
+}
+
+.card-details {
+  font-size: 14px;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .reps-group {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group {
+    justify-content: center;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    width: 94%;
+    gap: 20px;
+  }
+
+  .exercise-form {
+    padding: 20px 16px;
+  }
+
+  .input-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-gate-btn,
+  .exercise-card {
+    width: 100%;
+  }
+}
+
+
