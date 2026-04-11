@@ -1,12 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import axios from "axios";
-import Login from "./login";
 import "../../styles/register.css"
 import Navbar from "../../components/common/Navbar";
 import Footer from "../../components/common/Footer";
-import ServerUnavailable from "../ServerUnavailable.jsx";
-import { BACKEND_URL } from "../../config/api.js";
+import supabase from "../../config/supabase.js";
 
 function Register() {
     const [form, setForm] = useState({
@@ -23,7 +20,21 @@ function Register() {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            await axios.post(`${BACKEND_URL}/auth/signup`, form);
+            const { error } = await supabase.auth.signUp({
+                email: form.email,
+                password: form.password,
+                options: {
+                    data: {
+                        name: form.name
+                    },
+                    emailRedirectTo: `${window.location.origin}/userInfo?verified=success`
+                }
+            });
+
+            if (error) {
+                throw error;
+            }
+
             setRegistered(true);
             setMessage( "Please check your email for the verification link.");
         } catch(ee) {
@@ -36,13 +47,22 @@ function Register() {
 
     async function handleResendEmail() {
         try {
-            await axios.post(`${BACKEND_URL}/auth/resend-verification`, {
+            const { error } = await supabase.auth.resend({
+                type: "signup",
                 email: form.email
+                ,
+                options: {
+                    emailRedirectTo: `${window.location.origin}/userInfo?verified=success`
+                }
             });
+
+            if (error) {
+                throw error;
+            }
+
             setMessage("Verification email sent successfully.");
         } catch {
             setMessage("Unable to resend verification email.");
-            setServerError(true);
         }
     }
     if(!registered)
