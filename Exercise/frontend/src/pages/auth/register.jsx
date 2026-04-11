@@ -16,7 +16,6 @@ function Register() {
     });
     const [registered,setRegistered]=useState(false);
     const [message, setMessage] = useState("");
-    const [serverError, setServerError] = useState(false);
     function handleChange(e) {
         
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -27,10 +26,11 @@ function Register() {
             await axios.post(`${BACKEND_URL}/auth/signup`, form);
             setRegistered(true);
             setMessage( "Please check your email for the verification link.");
-        } catch {
+        } catch(ee) {
+            console.log(ee);
             setRegistered(false);
             setMessage( "Unable to create account.");
-            setServerError(true);
+            
         }
     }
 
@@ -45,7 +45,6 @@ function Register() {
             setServerError(true);
         }
     }
-    if(serverError) return <ServerUnavailable />;
     if(!registered)
     {
         return(
