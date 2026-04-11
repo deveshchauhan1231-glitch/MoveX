@@ -52,7 +52,7 @@ function Register() {
                 email: form.email
                 ,
                 options: {
-                    emailRedirectTo: `${window.location.origin}/userInfo?verified=success`
+                    emailRedirectTo: `${import.meta.env.VITE_PUBLIC_SITE_URL}/userInfo?verified=success`
                 }
             });
 
