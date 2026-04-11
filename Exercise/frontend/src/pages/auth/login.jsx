@@ -15,7 +15,6 @@ function Login(){
     const profile = searchParams.get("profile");
 
     const [registered, setRegistered] = useState(false);
-    const [serverError, setServerError] = useState(false);
 
     const [form, setForm] = useState({
         email:"",
@@ -36,7 +35,7 @@ function Login(){
             setRegistered(true);
         }catch{
             setRegistered(false);
-            setServerError(true);
+            
         }
     }
 
@@ -51,7 +50,6 @@ function Login(){
                         ? "Profile saved successfully. Please log in."
                         : "";
 
-    if(serverError) return <ServerUnavailable />;
 
     if(!registered){
         return(
