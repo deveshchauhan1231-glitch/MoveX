@@ -3,13 +3,15 @@ import { dailyStats } from "../models/dailyStats.js"
 import { exercise } from "../models/exercise.js";
 import { user } from "../models/Users.js";
 import mongoose from "mongoose";
+import requireAppUser from "../utils/requireAppUser.js";
 
 const getDailyStats = asyncHandler(async (req, res) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+    const currentUser = requireAppUser(req, res);
     try {
         const stats = await dailyStats.findOne({
-            userId: req.user.id,
+            userId: currentUser._id,
             date: today
         });
         res.status(200).json({
@@ -23,9 +25,10 @@ const getDailyStats = asyncHandler(async (req, res) => {
 const getExercise = asyncHandler(async (req, res) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+    const currentUser = requireAppUser(req, res);
     try {
         const allExercises = await exercise.find({
-            userId: req.user.id,
+            userId: currentUser._id,
             date: today
         });
         res.status(200).json({
@@ -39,26 +42,27 @@ const getExercise = asyncHandler(async (req, res) => {
 const postDailyStats = asyncHandler(async (req, res) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+    const currentUser = requireAppUser(req, res);
 
     const { calories, strength } = req.body;
 
     await Promise.all([
         dailyStats.updateOne(
             {
-                userId: req.user.id,
+                userId: currentUser._id,
                 date: today
             },
             {
                 $inc: { calories, strength },
                 $setOnInsert: {
-                    userId: (req.user.id),
+                    userId: currentUser._id,
                     date: today
                 }
             },
             { upsert: true }
         ),
         user.updateOne(
-            { _id: req.user.id },
+            { _id: currentUser._id },
             { $inc: { totalCal: calories, totalStrength: strength } }
         )
     ]);
@@ -68,9 +72,10 @@ const postDailyStats = asyncHandler(async (req, res) => {
 const postDailyExercises = asyncHandler(async (req, res) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+    const currentUser = requireAppUser(req, res);
 
     const { exercises } = req.body;
-    const userObjectId = (req.user.id);
+    const userObjectId = currentUser._id;
 
     const addExercise = await exercise.updateOne(
         {
@@ -94,8 +99,9 @@ const postDailyExercises = asyncHandler(async (req, res) => {
     }
 });
 const getTotalCalandStr = asyncHandler(async (req, res) => {
+    const currentUser = requireAppUser(req, res);
     try {
-        const foundUser = await user.findById(req.user.id).select("totalCal totalStrength");
+        const foundUser = await user.findById(currentUser._id).select("totalCal totalStrength");
         if (!foundUser) {
             return res.status(404).json({ message: "User not found" });
         }
@@ -111,8 +117,9 @@ const getTotalCalandStr = asyncHandler(async (req, res) => {
 });
 //heatmap function needs to be debugged 
 const getHeatMapInfo = asyncHandler(async (req, res) => {
+    const currentUser = requireAppUser(req, res);
     try {
-        const userObjectId = (req.user.id);
+        const userObjectId = currentUser._id;
 
         const end = new Date();
         end.setHours(0, 0, 0, 0);
@@ -134,9 +141,10 @@ const getHeatMapInfo = asyncHandler(async (req, res) => {
     }
 });
 const getBest = asyncHandler(async (req, res) => {
+    const currentUser = requireAppUser(req, res);
     try {
         const stats = await dailyStats.aggregate([
-            { $match: { userId: new mongoose.Types.ObjectId(req.user.id) } },
+            { $match: { userId: new mongoose.Types.ObjectId(currentUser._id) } },
             {
                 $group: {
                     _id: "$userId",
