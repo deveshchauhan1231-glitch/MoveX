@@ -1,10 +1,9 @@
 import crypto from "crypto";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 const createEmailVerificationToken = () => {
     const rawToken = crypto.randomBytes(32).toString("hex");
     const hashedToken = crypto.createHash("sha256").update(rawToken).digest("hex");
-
     return {
         rawToken,
         hashedToken,
@@ -17,24 +16,15 @@ const getVerificationLink = (token) => {
     return `${backendUrl}/auth/verify-email?token=${token}`;
 };
 
-const createTransporter = () => nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD
-    }
-});
-
 const sendVerificationEmail = async ({ email, name, token }) => {
-    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-        throw new Error("Gmail credentials are not configured");
+    if (!process.env.RESEND_API_KEY) {
+        throw new Error("Resend API key is not configured");
     }
-
-    const transporter = createTransporter();
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const verificationLink = getVerificationLink(token);
 
-    await transporter.sendMail({
-        from: process.env.GMAIL_USER,
+    await resend.emails.send({
+        from: process.env.FROM_EMAIL,
         to: email,
         subject: "Verify your email",
         html: `
