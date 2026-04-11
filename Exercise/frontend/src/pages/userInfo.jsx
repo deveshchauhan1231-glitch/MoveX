@@ -4,9 +4,11 @@ import axios from "axios";
 import "../styles/userInfo.css"
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
+import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import ServerUnavailable from "./ServerUnavailable.jsx";
 import { BACKEND_URL } from "../config/api.js";
+import supabase from "../config/supabase.js";
 function UserInfo() {
     const navigate=useNavigate();
     const [searchParams] = useSearchParams();
@@ -19,8 +21,25 @@ function UserInfo() {
     const[updated,setUpdated]=useState(false);
     const [message, setMessage] = useState("");
     const [serverError, setServerError] = useState(false);
+    const verified = searchParams.get("verified");
 
-    const token = searchParams.get("token");
+    useEffect(() => {
+        (async () => {
+            const { data } = await supabase.auth.getUser();
+            const currentName = data.user?.user_metadata?.name;
+
+            if (currentName) {
+                setInfo((prev) => ({
+                    ...prev,
+                    name: currentName
+                }));
+            }
+
+            if (!data.user && verified === "success") {
+                setMessage("Your verification session is missing or expired. Please log in again.");
+            }
+        })();
+    }, [verified]);
 
     function handleChange(e) {
         setInfo({ ...info, [e.target.name]: e.target.value });
@@ -28,13 +47,14 @@ function UserInfo() {
 
     async function handleSubmit(e){
         e.preventDefault();
-        if (!token) {
+        const { data } = await supabase.auth.getSession();
+
+        if (!data.session) {
             setMessage("Your verification session is missing or expired. Please verify your email again.");
             return;
         }
         try{
             await axios.post(`${BACKEND_URL}/auth/complete-profile`,{
-                token,
                 name: info.name,
                 gender: info.gender,
                 age: Number(info.age),
