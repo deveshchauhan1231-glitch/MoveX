@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
 const userSchema=new mongoose.Schema({
+    supabaseUserId: {
+        type: String,
+        unique: true,
+        sparse: true
+    },
     name:String,
     email:{
         type:String,
@@ -11,7 +16,6 @@ const userSchema=new mongoose.Schema({
     },
     password:{
         type:String,
-        required:true,
         minlength: 8,
         match: [
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#()[\]{}\-_=+|\\:;"'<>,./]).{8,}$/,
