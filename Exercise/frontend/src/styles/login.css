@@ -61,6 +61,30 @@ border: 1px solid rgba(255, 255, 255, 0.1);
            /* Takes remaining space */
 }
 
+@media (max-width: 1024px) {
+    .login-container {
+        width: min(520px, 92%);
+        height: auto;
+        padding: 40px 28px;
+    }
+
+    .login-inp {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .login-container {
+        padding: 28px 18px;
+        gap: 28px;
+    }
+
+    .login-inp-field {
+        height: 42px;
+        font-size: 0.98rem;
+    }
+}
+
 @media (max-width: 768px) {
     .login-container {
         width: 90%;
