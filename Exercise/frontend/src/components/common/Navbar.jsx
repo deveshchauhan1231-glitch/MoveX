@@ -12,8 +12,8 @@ function Navbar() {
             <div className="nav-shell">
                 <div className="nav-left">
                     <Link to="/" className="brand-link" onClick={closeMenu}>
-                        <img src="/sh.png" alt="MoveX logo" className="brand-logo" />
-                        <span className="brand-name">MoveX</span>
+                        <img src="/Movex.png" alt="MoveX logo" className="brand-logo" />
+                        
                     </Link>
 
                     <ul className="items items-primary desktop-only">
