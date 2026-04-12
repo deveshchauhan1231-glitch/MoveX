@@ -11,6 +11,7 @@ function Register() {
         email: "",
         password: ""
     });
+    const[loading,setLoading]=useState(false);
     const [registered,setRegistered]=useState(false);
     const [message, setMessage] = useState("");
     function handleChange(e) {
@@ -20,6 +21,7 @@ function Register() {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
+            setLoading(true);
             const { error } = await supabase.auth.signUp({
                 email: form.email,
                 password: form.password,
@@ -34,7 +36,7 @@ function Register() {
             if (error) {
                 throw error;
             }
-
+            
             setRegistered(true);
             setMessage( "Please check your email for the verification link.");
         } catch(ee) {
@@ -42,7 +44,8 @@ function Register() {
             setRegistered(false);
             setMessage( "Unable to create account.");
             
-        }
+        }finally{
+            setLoading(false)}
     }
 
     async function handleResendEmail() {
@@ -85,7 +88,7 @@ function Register() {
                 <label>Password : </label>
                 <input type="password" name="password" value={form.password} placeholder="Enter your password" onChange={handleChange} className="register-inp-field" autoComplete="off"/>
                 </span>
-                <button type="submit" onClick={handleSubmit} >Submit</button>   
+                <button type="submit" onClick={handleSubmit} disabled={loading}>{loading ? "Working..." : "Submit"}</button>   
             </form>
             <Footer />
         </div>
