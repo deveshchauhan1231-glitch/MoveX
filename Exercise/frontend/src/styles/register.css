@@ -57,6 +57,29 @@ border: 1px solid rgba(255, 255, 255, 0.1);}
            /* Takes remaining space */
 }
 
+@media (max-width: 1024px) {
+    .register-container {
+        width: min(520px, 92%);
+        height: auto;
+        padding: 36px 26px;
+    }
+
+    .register-inp {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .register-container {
+        padding: 26px 18px;
+        gap: 28px;
+    }
+
+    .register-inp-field {
+        height: 42px;
+    }
+}
+
 @media (max-width: 768px) {
     .register-container {
         width: 90%;
