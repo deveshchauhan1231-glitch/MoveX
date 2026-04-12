@@ -128,6 +128,37 @@ border: 1px solid rgba(255, 255, 255, 0.1);    flex-direction: column;
   transition: width 0.3s ease;
 }
 
+@media (max-width: 1024px) {
+  .ex-container {
+    gap: 20px;
+  }
+
+  .ex-search,
+  .ex-filter {
+    width: 95%;
+  }
+
+  .ex-exCard {
+    width: 48%;
+  }
+}
+
+@media (max-width: 600px) {
+  .ex-search,
+  .ex-filter {
+    gap: 8px;
+  }
+
+  .ex-inp {
+    height: 46px;
+    font-size: 1.05rem;
+  }
+
+  .ex-btn {
+    height: 52px;
+  }
+}
+
 @media (max-width: 768px) {
   .ex-search,
   .ex-filter {
