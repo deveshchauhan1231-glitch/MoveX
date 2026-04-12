@@ -44,6 +44,27 @@ margin-top: 12px;
     gap: 12px;
 }
 
+@media (max-width: 1024px) {
+    .hero-top {
+        width: 94%;
+        gap: 24px;
+    }
+
+    .h-img,
+    .h-info {
+        width: 48%;
+    }
+
+    .h-info {
+        margin-top: 20px;
+    }
+
+    .h-btn {
+        width: 180px;
+        height: 48px;
+    }
+}
+
 @media (max-width: 768px) {
     .hero-top {
         width: 100%;
