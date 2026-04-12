@@ -27,6 +27,12 @@
     }
 }
 
+@media (max-width: 600px) {
+    .l-content {
+        width: 94%;
+    }
+}
+
 @media (max-width: 480px) {
     .l-content {
         height: auto;
