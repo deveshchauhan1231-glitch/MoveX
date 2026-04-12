@@ -15,7 +15,8 @@ function Dashboard() {
   const [heatMapData, setHeatMapData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [serverError, setServerError] = useState(false);
-
+  const [auth, setAuth] = useState(true);
+  
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
@@ -46,8 +47,13 @@ function Dashboard() {
 
         setHeatMapData(heatmapData);
       } catch (error) {
-        console.error("Dashboard data fetch failed:", error);
-        setServerError(true);
+          if (err.response?.status === 401) {
+          setAuth(false);
+          }
+        else{
+          setServerError(true);
+        }
+        
       } finally {
         setLoading(false);
       }
@@ -77,6 +83,31 @@ Volume Lifted: ${dayData.strength}`;
       </>
     );
   }
+  else if (!auth) {
+    return (
+      <div className="page-frame">
+        <Navbar />
+
+        <div className="loading-page">
+          <div className="auth-gate-card">
+            <h1>Sign in to continue</h1>
+            <p>
+              Save your workouts, track your progress, and see your performance analytics.
+            </p>
+
+            <button
+              className="auth-gate-btn"
+              onClick={() => navigate("/Login")}
+            >
+              Sign in
+            </button>
+          </div>
+        </div>
+
+        <Footer />
+      </div>);
+  }
+
 
   return (
     <>
