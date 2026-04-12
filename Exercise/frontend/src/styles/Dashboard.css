@@ -13,7 +13,7 @@
 
 .dashboard-loading {
   height: 100vh;
-  width: 100vh;
+  width: 100%;
   
   display: flex;
   justify-content: center;
@@ -168,5 +168,14 @@
 
   .stat-number {
     font-size: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  .heatmap-wrapper {
+    padding: 20px 12px;
+    overflow-x: auto;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+    display: block;
   }
 }
