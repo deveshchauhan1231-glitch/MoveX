@@ -209,6 +209,21 @@
 
 /* responsive */
 
+@media (max-width: 1024px) {
+  .cc-container {
+    padding: 10px 16px 0;
+  }
+
+  .cc-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .cc-upload-zone,
+  .cc-preview {
+    height: 260px;
+  }
+}
+
 @media (max-width: 900px) {
   .cc-main-grid,
   .cc-bottom-section {
