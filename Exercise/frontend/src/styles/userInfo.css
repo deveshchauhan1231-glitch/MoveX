@@ -95,6 +95,28 @@ border: 1px solid rgba(255, 255, 255, 0.1);
     background: #2bab6f;
 }
 
+@media (max-width: 1024px) {
+    .u-form,
+    .u-success {
+        width: 80%;
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .u-form {
+        padding: 18px;
+    }
+
+    .u-inp {
+        padding: 8px;
+    }
+
+    .u-field label {
+        width: 100px;
+    }
+}
+
 @media (max-width: 768px) {
     .u-form,
     .u-success {
