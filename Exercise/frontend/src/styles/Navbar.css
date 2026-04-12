@@ -1,53 +1,226 @@
-body{
-    margin: 0px;
-    padding: 0px;
-    width: 100vw;
-}
-.bar{
-    display: flex;
-    align-items: center;
-    background-color: #2bab6f;
-    padding-top: 10px;
-    padding-bottom: 10px;
+body {
+    margin: 0;
+    padding: 0;
     width: 100%;
-    height: 35px;
-    position: fixed;   
+}
+
+.bar {
+    position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     z-index: 1000;
-    justify-content: space-between;
+    width: 100%;
+    background-color: #2bab6f;
 }
-.items{
+
+.nav-shell {
+    position: relative;
     display: flex;
-    gap: 15px;
-    list-style: none;
-    margin: 0px;
-    padding: 12px;
-    
     align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    min-height: 58px;
+    padding: 8px 0 8px 16px;
+    overflow-x: clip;
 }
-.items a{
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
     text-decoration: none;
+    flex: 0 0 auto;
+}
+
+.brand-logo {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    max-width: 32px;
+    object-fit: contain;
+    display: block;
+    flex: 0 0 auto;
+}
+
+.brand-name {
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+.items {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.items li {
+    flex: 0 0 auto;
+}
+
+.items a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 10px;
+    text-decoration: none;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.items-primary {
+    gap: 2px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.items-secondary {
+    gap: 2px;
+    margin-left: auto;
+    padding-right: 0;
+    flex: 0 0 auto;
+}
+
+.desktop-only {
+    display: flex;
+}
+
+.nav-toggle {
+    display: none;
+    width: 52px;
+    height: 58px;
+    margin-left: auto;
+    margin-right: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    flex: 0 0 auto;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 999px;
+    background: #ffffff;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-panel {
+    display: none;
+}
+
+@media (max-width: 980px) {
+    .nav-shell {
+        padding-left: 12px;
+    }
+
+    .nav-left {
+        gap: 16px;
+    }
+
+    .items a {
+        padding: 0 8px;
+        font-size: 0.95rem;
+    }
 }
 
 @media (max-width: 768px) {
-    .bar {
-        height: auto;
-        padding: 10px 12px;
-        flex-direction: column;
-        gap: 8px;
+    .nav-shell {
+        min-height: 56px;
+        padding: 6px 0 6px 12px;
     }
 
-    .items {
+    .desktop-only {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+    }
+
+    .nav-panel {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        padding: 8px 0 12px;
+        background-color: #2bab6f;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-panel.open {
+        display: block;
+    }
+
+    .items-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
         width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
+        gap: 0;
+    }
+
+    .items-mobile li {
+        width: 100%;
+    }
+
+    .items-mobile a {
+        width: 100%;
+        min-height: 44px;
+        padding: 0 12px;
     }
 }
 
 @media (max-width: 480px) {
-    .items {
-        gap: 10px;
-        padding: 8px;
+    .nav-shell {
+        padding-left: 10px;
+    }
+
+    .brand-logo {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        max-width: 28px;
+    }
+
+    .brand-name {
+        font-size: 0.95rem;
+    }
+
+    .nav-toggle {
+        width: 48px;
+        height: 52px;
     }
 }
