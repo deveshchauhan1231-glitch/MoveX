@@ -79,8 +79,26 @@
   }
 }
 
+@media (max-width: 600px) {
+  .footer-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
 @media (max-width: 480px) {
   .footer {
-    padding: 20px 12px;
+    padding: 16px 10px;
+  }
+
+  .footer-main {
+    gap: 12px;
+  }
+
+  .footer-brand p,
+  .footer-system p,
+  .footer-dev p {
+    margin: 2px 0;
   }
 }
