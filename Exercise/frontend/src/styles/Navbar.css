@@ -32,13 +32,6 @@ body{
 
 
 
-@media (max-width: 480px) {
-    .items {
-        gap: 10px;
-        padding: 8px;
-    }
-}
-/* Hamburger - hidden on desktop */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -51,34 +44,27 @@ body{
     display: block;
     width: 25px;
     height: 2px;
-    background-color: white; /* change to match your navbar text color */
+    background-color: white;
     border-radius: 2px;
-    transition: all 0.3s ease;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-    .bar {
-        flex-wrap: wrap;
-        position: relative;
-    }
-
     .hamburger {
         display: flex;
     }
 
-    .nav-links {
+    .bar {
+        flex-wrap: wrap;
+    }
+
+    .items {
         display: none;
-        width: 100%;
-        flex-direction: column;
     }
 
-    .nav-links.open {
+    .items.open {
         display: flex;
-    }
-
-    .nav-links .items {
         flex-direction: column;
-        padding: 8px 0;
+        width: 100%;
     }
+}
 }
