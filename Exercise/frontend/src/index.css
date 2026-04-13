@@ -1,3 +1,7 @@
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -59,6 +63,7 @@ button:hover {
   button {
     width: 100%;
   }
+  
 }
 
 @media (max-width: 480px) {
