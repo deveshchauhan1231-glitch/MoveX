@@ -65,40 +65,43 @@
 @media (max-width: 768px) {
   .footer {
     padding: 24px 14px;
+    box-sizing: border-box;
   }
 
   .footer-main {
-    gap: 24px;
+    gap: 20px;
     justify-content: flex-start;
   }
 
   .footer-brand,
   .footer-system,
   .footer-dev {
+    flex: 1 1 100%;
     max-width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  .footer-main {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .footer {
-    padding: 16px 10px;
+    padding: 20px 14px;
   }
 
   .footer-main {
-    gap: 12px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-brand h2 {
+    font-size: 18px;
   }
 
   .footer-brand p,
   .footer-system p,
   .footer-dev p {
-    margin: 2px 0;
+    font-size: 13px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
   }
 }
