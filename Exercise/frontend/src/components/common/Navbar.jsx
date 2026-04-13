@@ -1,44 +1,64 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Navbar.css";
+
 function Navbar() {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const closeMenu = () => setMenuOpen(false);
+
     return (
-        <>
-            <div 
-                className="bar" 
-                
-            >
-                <ul className="items">
-                    <li><img src="/Movex.png" style={{width:"35px", height:"35px", borderRadius:"50%", padding:"0px"}} /></li>
-                    <Link to="/" >
-                        <li>Home</li>
+        <header className="bar">
+            <div className="nav-shell">
+                <div className="nav-left">
+                    <Link to="/" className="brand-link" onClick={closeMenu}>
+                        <img src="/Movex.png" alt="MoveX logo" className="brand-logo" style={{borderRadius:"50%"}}/>
+                        
                     </Link>
-                    <Link to="/dashboard" >
-                        <li>Dashboard</li>
-                    </Link>
-                    <Link to="/exercises" >
-                        <li>Exercises</li>
-                    </Link>
-                    
-                    <Link to="/LogWorkout">Log Exercises</Link>
-                    <Link to="/Sahay"><li>S.A.H.A.Y</li></Link>
-                    <Link to="/about" >
-                    
-                        <li>About</li>
-                    </Link>
-                    </ul>
-                    <ul className="items">
-                    
 
-                    <Link to="/Login"><li>Sign in</li></Link>
-                    <Link to="/Signup"><li>Sign up</li></Link>
-                    <Link to="/logout" >
-                        <li>Logout</li>
-                    </Link>
+                    <ul className="items items-primary desktop-only">
+                        <li><Link to="/" onClick={closeMenu}>Home</Link></li>
+                        <li><Link to="/dashboard" onClick={closeMenu}>Dashboard</Link></li>
+                        <li><Link to="/exercises" onClick={closeMenu}>Exercises</Link></li>
+                        <li><Link to="/LogWorkout" onClick={closeMenu}>Log Exercises</Link></li>
+                        <li><Link to="/Sahay" onClick={closeMenu}>S.A.H.A.Y</Link></li>
+                        <li><Link to="/about" onClick={closeMenu}>About</Link></li>
                     </ul>
+                </div>
 
-                
+                <ul className="items items-secondary desktop-only">
+                    <li><Link to="/Login" onClick={closeMenu}>Sign in</Link></li>
+                    <li><Link to="/Signup" onClick={closeMenu}>Sign up</Link></li>
+                    <li><Link to="/logout" onClick={closeMenu}>Logout</Link></li>
+                </ul>
+
+                <button
+                    type="button"
+                    className={`nav-toggle ${menuOpen ? "open" : ""}`}
+                    onClick={() => setMenuOpen((prev) => !prev)}
+                    aria-label="Toggle navigation menu"
+                    aria-expanded={menuOpen}
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div className={`nav-panel ${menuOpen ? "open" : ""}`}>
+                    <ul className="items items-mobile">
+                        <li><Link to="/" onClick={closeMenu}>Home</Link></li>
+                        <li><Link to="/dashboard" onClick={closeMenu}>Dashboard</Link></li>
+                        <li><Link to="/exercises" onClick={closeMenu}>Exercises</Link></li>
+                        <li><Link to="/LogWorkout" onClick={closeMenu}>Log Exercises</Link></li>
+                        <li><Link to="/Sahay" onClick={closeMenu}>S.A.H.A.Y</Link></li>
+                        <li><Link to="/about" onClick={closeMenu}>About</Link></li>
+                        <li><Link to="/Login" onClick={closeMenu}>Sign in</Link></li>
+                        <li><Link to="/Signup" onClick={closeMenu}>Sign up</Link></li>
+                        <li><Link to="/logout" onClick={closeMenu}>Logout</Link></li>
+                    </ul>
+                </div>
             </div>
-        </>
+        </header>
     );
 }
 
