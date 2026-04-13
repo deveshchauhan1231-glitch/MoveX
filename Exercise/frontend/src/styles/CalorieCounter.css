@@ -209,7 +209,7 @@
 
 /* responsive */
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
   .cc-main-grid,
   .cc-bottom-section {
     flex-direction: column;
