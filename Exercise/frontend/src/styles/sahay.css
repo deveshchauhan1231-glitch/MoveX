@@ -145,6 +145,10 @@
         height: 44px;
         width: 100%;
     }
+        .s-form {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
 }
 
 @media (max-width: 480px) {
