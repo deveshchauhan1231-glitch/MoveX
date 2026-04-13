@@ -91,7 +91,7 @@ body {
 .items-secondary {
     gap: 2px;
     margin-left: auto;
-    padding-right: 0;
+    padding-right: 10;
     flex: 0 0 auto;
 }
 
