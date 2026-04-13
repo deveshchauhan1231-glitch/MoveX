@@ -209,21 +209,6 @@
 
 /* responsive */
 
-@media (max-width: 1024px) {
-  .cc-container {
-    padding: 10px 16px 0;
-  }
-
-  .cc-header h1 {
-    font-size: 2.2rem;
-  }
-
-  .cc-upload-zone,
-  .cc-preview {
-    height: 260px;
-  }
-}
-
 @media (max-width: 900px) {
   .cc-main-grid,
   .cc-bottom-section {
@@ -246,9 +231,8 @@
 
 @media (max-width: 600px) {
   .cc-container {
-    margin-top: 60px;
+    margin-top: 20px;
     padding: 20px 16px 0;
-    width: 93vw;
   }
 
   .cc-upload-zone,
