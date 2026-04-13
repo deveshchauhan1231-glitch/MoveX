@@ -246,8 +246,9 @@
 
 @media (max-width: 600px) {
   .cc-container {
-    margin-top: 20px;
+    margin-top: 60px;
     padding: 20px 16px 0;
+    width: 93vw;
   }
 
   .cc-upload-zone,
