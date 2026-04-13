@@ -46,7 +46,7 @@ margin-top: 12px;
 
 @media (max-width: 1024px) {
     .hero-top {
-        width: 94%;
+       width: 90%;
         gap: 24px;
     }
 
@@ -67,7 +67,7 @@ margin-top: 12px;
 
 @media (max-width: 768px) {
     .hero-top {
-        width: 100%;
+        width: 90%;
         flex-direction: column;
         padding: 16px;
     }
