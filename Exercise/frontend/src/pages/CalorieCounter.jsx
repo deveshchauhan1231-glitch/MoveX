@@ -50,7 +50,7 @@ function CalorieCounter() {
         carbs: data.carbs || 0,
         insights: data.insights || "",
       });
-    } catch (error) {
+    } catch (err) {
       if (err.response?.status === 401) {
           setAuth(false);
           setLoading(false);
