@@ -74,10 +74,7 @@ border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 600px) {
-    .login-container {
-        padding: 28px 18px;
-        gap: 28px;
-    }
+   
 
     .login-inp-field {
         height: 42px;
@@ -88,7 +85,7 @@ border: 1px solid rgba(255, 255, 255, 0.1);
 @media (max-width: 768px) {
     .login-container {
         width: 80%;
-        margin-top: 60px;
+        margin-top: 45px;
         gap: 24px;
     }
 
@@ -100,10 +97,7 @@ border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 480px) {
-    .login-container {
-        margin-top: 24px;
-        gap: 24px;
-    }
+    
 
     .login-inp {
         flex-direction: column;
