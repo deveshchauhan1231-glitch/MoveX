@@ -85,6 +85,10 @@ border: 1px solid rgba(255, 255, 255, 0.1);}
         width: 90%;
         padding: 28px 20px;
     }
+    .register-inp-field {
+        height: 42px;
+        flex:auto;
+    }
 
     .register-inp {
         width: 100%;
