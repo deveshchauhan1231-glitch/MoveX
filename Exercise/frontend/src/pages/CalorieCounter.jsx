@@ -11,7 +11,6 @@ function CalorieCounter() {
   const [preview, setPreview] = useState("");
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState(false);
-  const [auth, setAuth] = useState(true);
   const [result, setResult] = useState({
     total_cal: 0,
     protein: 0,
@@ -51,47 +50,15 @@ function CalorieCounter() {
         insights: data.insights || "",
       });
     } catch (error) {
-      if (err.response?.status === 401) {
-          setAuth(false);
-          setLoading(false);
-        }
-      else{
-        setServerError(true);
-      }
-      
-      
+      console.error(error);
+      setServerError(true);
     } finally {
       setLoading(false);
     }
   };
 
   if (serverError) return <ServerUnavailable />;
-  else if(!auth){
-    
-    return (
-      <div className="page-frame">
-        <Navbar />
 
-        <div className="loading-page">
-          <div className="auth-gate-card">
-            <h1>Sign in to continue</h1>
-            <p>
-              Please Sign up / Sign in to Continue
-            </p>
-
-            <button
-              className="auth-gate-btn"
-              onClick={() => navigate("/Login")}
-            >
-              Sign in
-            </button>
-          </div>
-        </div>
-
-        <Footer />
-      </div>);
-  
-  }
   return (
     <>
       <Navbar />
