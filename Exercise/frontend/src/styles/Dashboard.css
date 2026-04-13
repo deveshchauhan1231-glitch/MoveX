@@ -148,6 +148,7 @@
 @media (max-width: 600px) {
   .dashboard-container {
     padding: 24px 14px;
+    width: 90vw;
   }
 
   .dashboard-header h1 {
@@ -164,6 +165,10 @@
 }
 
 @media (max-width: 480px) {
+  .dashboard-container {
+    padding: 24px 14px;
+    width: 90vw;
+  }
   .dashboard-header h1 {
     font-size: 1.8rem;
   }
