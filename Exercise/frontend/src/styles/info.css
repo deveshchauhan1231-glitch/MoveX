@@ -151,37 +151,6 @@ border: 1px solid rgba(255, 255, 255, 0.1);
     justify-content: space-around;
 }
 
-@media (max-width: 1024px) {
-    .top-hero {
-        width: 95%;
-        height: auto;
-    }
-
-    .img-hero {
-        width: 48%;
-        height: auto;
-    }
-
-    .tech-info {
-        width: 48%;
-    }
-
-    .steps,
-    .basic-info {
-        width: 46%;
-    }
-}
-
-@media (max-width: 600px) {
-    .detail-info {
-        font-size: 1.05rem;
-    }
-
-    .parts ul li {
-        font-size: 1.05rem;
-    }
-}
-
 @media (max-width: 768px) {
     .top-hero,
     .bottom-hero {
