@@ -113,7 +113,7 @@ function Info(){
             <div className="top-hero">
                 <div className="img-hero" ><h1>Images coming soon</h1></div>
                 <div className="tech-info">
-                    <div className="detail-info"><h1>{info.name.toUpperCase()}</h1></div>
+                    <div className="detail-info"><h2>{info.name.toUpperCase()}</h2></div>
                     <div className="detail-info">
                         <p >INTENSITY SCORE</p>
                         <h1><strong>{info.met}</strong></h1>
