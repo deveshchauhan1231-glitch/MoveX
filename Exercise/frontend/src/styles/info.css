@@ -78,6 +78,7 @@ border: 1px solid rgba(255, 255, 255, 0.1);    color: white;
     width: 40%;
     color: #fff;
     justify-content: space-around;
+}
 
 .steps{
     display: flex;
