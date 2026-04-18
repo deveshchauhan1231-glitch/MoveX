@@ -42,16 +42,17 @@ border: 1px solid rgba(255, 255, 255, 0.1);    color: white;
     color:  white;
 }
 
-.top-hero{
+.top-hero {
+    align-items: center;
+    justify-content: center;
     display: flex;
     gap: 10px;
     padding: 10px;
     width: 90%;
     height: 400px;
     border: 2px solid rgb(62, 62, 62);
-    background: rgba(62, 62, 62, 0.55);
+    background: #3e3e3e8c;
     border-radius: 18px;
-}
 
 .img-hero{
     width: 50%;
@@ -68,14 +69,15 @@ border: 1px solid rgba(255, 255, 255, 0.1);    color: white;
     
 }
 
-.tech-info{
+.tech-info {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    
     padding: 15px;
     width: 40%;
-    color: white;
-}
+    color: #fff;
+    justify-content: space-around;
 
 .steps{
     display: flex;
